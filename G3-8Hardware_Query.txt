@@ -1,0 +1,16 @@
+Select
+A. NetBios_Name0 as 'Server Name',AD_Site_Name0 as 'AD Site',
+B. Caption0 as 'OSType',
+C. Model0 as '(HP Proliant G7 or G8)=Green'
+
+FROM
+V_R_SYSTEM A,
+V_GS_OPERATING_SYSTEM B,
+V_GS_COMPUTER_SYSTEM C
+
+WHERE
+A.ResourceID = B.ResourceID AND
+A.ResourceID = C.ResourceID AND
+B.Caption0 like '%server%'AND
+A.AD_Site_Name0 like '%'AND
+(C.Model0 like 'ProLiant%G7' OR C.Model0 like 'ProLiant%G8')

@@ -1,0 +1,129 @@
+**********************************************
+Count Number of records and display the total
+1. Insert a row
+2. Add the function below
+**********************************************
+
+=Count(Fields!Server_Name.Value) 
+
+
+*************************************************
+Row numbering  function
+1.  Insert new column to the left of Server_Name
+2.  Add the funtion below to number the rows
+*************************************************
+
+=RowNumber(Nothing) 
+
+**********************************************************************
+Conditional Color Formatting based on value in the "Platform" column
+**********************************************************************
+
+=Iif(Fields!Platform.Value = "VMware Virtual Platform",  "RoyalBlue", "#4c68a2") 
+
+*******************************************************************
+Conditional color formatting based on value in the "AD_Site"  column
+*******************************************************************
+
+=Iif(Fields!AD_Site.Value = "UsNcCorporate01", "Blue",  Iif(Fields!AD_Site.Value = 
+"UsTxSanAntonio01", "Purple", "Gray")) 
+
+
+
+***************************************************************************
+Conditional color formatting based on build date if Less than 30 days ago
+****************************************************************************
+
+
+=Iif(DateDiff("d",Fields!Build_Date.Value, Now())<30, "Red", "#4c68a2
+
+
+
+
+
+*************************************************************************
+Conditional color formatting based on value in the "Dept" column  
+************************************************************************
+
+
+=Iif(Fields!Dept.Value = "0078",  "Black", "#4c68a2") 
+
+*************************************************************************
+Conditional color formatting based on value in the "Platform" column  
+************************************************************************
+
+=Switch(Fields!Platform.Value like "*G2", "Red",
+
+Fields!Platform.Value like "*G3", "Red",
+
+
+Fields!Platform.Value like "*G4", "Red",
+
+Fields!Platform.Value like "*G5", "Yellow",
+
+Fields!Platform.Value like "*G5p", "Yellow",
+
+
+Fields!Platform.Value like "*G6", "Yellow",
+
+Fields!Platform.Value like "*G7", "Green",
+
+Fields!Platform.Value like "*Gen8", "Green",
+
+Fields!Platform.Value like "*Platform", "Green")
+
+*********************************************************************************
+Conditional color formatting based on value in the "Server_Operating_System" column  
+*********************************************************************************
+
+=Switch(Fields!Server_Operating_System.Value like "*2003*", "Red",
+
+Fields!
+Server_Operating_System.Value like "*2003*", "Red",
+
+
+Fields!Server_Operating_System.Value 
+like "*2008 Standard", "Yellow",
+
+Fields!Server_Operating_System.Value like "*2008 
+Enterprise", "Yellow",
+
+Fields!Server_Operating_System.Value like "*2008 R2*", "Green",
+
+
+
+Fields!Server_Operating_System.Value like "*2012*", "Green")
+
+************************************************************************
+Using wildcard to color the font if name is like  DC
+*************************************************************************
+
+=Iif(Fields!Server_Name.Value like "DC*", "Green", "#4c68a2")
+
+
+*************************************************************************
+Conditional color formatting based on value in the Uptime_in_Hours column  
+************************************************************************
+
+
+=Iif(Fields!Uptime__in_Hours_.Value > 840, "RED", "#4c68a2") 
+
+
+*****************************************************************************
+Conditional color formatting based on numerical value of Compliance_Percentage  
+*****************************************************************************
+
+
+=Iif(Fields!Compliance_Percentage.Value >= 90, "Green", Iif(Fields!
+Compliance_Percentage.Value>=75, "Yellow", "Red"))
+
+
+
+
+
+
+
+
+
+
+
