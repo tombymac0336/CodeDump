@@ -1,0 +1,3 @@
+SET KEY=HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+SET VALUE= "FDR Upstream"
+for /F "tokens=1,*" %%a in ('REG QUERY /s "%KEY%" ^| findstr /I /C:"%VALUE%"') do (REG DELETE "%KEY%" /v %%a)

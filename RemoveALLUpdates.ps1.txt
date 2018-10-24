@@ -1,0 +1,7 @@
+Get-WmiObject -query “Select HotFixID from Win32_QuickFixengineering” | sort-object -Descending -Property HotFixID|%{
+ $sUpdate=$_.HotFixID.Replace(“KB”,””)
+write-host (“Uninstalling update “+$sUpdate);
+ & wusa.exe /uninstall /KB:$sUpdate /quiet /norestart;
+ Wait-Process wusa
+ Start-Sleep -s 1
+ }
