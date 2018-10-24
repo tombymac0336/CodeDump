@@ -1,0 +1,1 @@
+net use >> \\msinstall\windows7\%COMPUTERNAME%.txt
