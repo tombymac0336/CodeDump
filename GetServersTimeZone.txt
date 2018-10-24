@@ -1,0 +1,42 @@
+select 
+    v_R_System.Name0,   
+    v_GS_COMPUTER_SYSTEM.CurrentTimeZone0 
+from v_R_System 
+inner join v_GS_COMPUTER_SYSTEM on v_GS_COMPUTER_SYSTEM.ResourceID = v_R_System.ResourceId 
+join v_FullCollectionMembership ON v_FullCollectionMembership.ResourceID = v_R_System.ResourceID
+where 
+    v_GS_COMPUTER_SYSTEM.CurrentTimeZone0 != -360 
+    AND v_FullCollectionMembership.CollectionID = '<yourcollectionid>'
+order by Name0
+
+******************************************************************* 
+
+
+SELECT
+A.Name0 AS 'Server Name',
+A.Model0 AS 'Platform (VMWare or HP Proliant)',
+H.Caption0 AS 'Server Operating System',
+H.CSDVersion0 AS 'Service Pack Level',
+G.AD_Site_Name0 AS 'AD Site',
+A.CurrentTimeZOne0 AS 'Current Time Zone'
+MAX (F.IPAddress0) AS 'IP Address'
+ 
+FROM
+v_GS_COMPUTER_SYSTEM A,
+
+
+v_GS_NETWORK_ADAPTER_CONFIGUR F,
+v_R_System G,
+v_GS_OPERATING_SYSTEM H
+
+WHERE
+
+A.ResourceID = F.ResourceID AND
+A.ResourceID = G.ResourceID AND
+A.ResourceID = H.ResourceID AND
+
+A.ResourceID = L.ResourceID AND
+A.ResourceID in (select ResourceID from v_CM_RES_COLL_CAS00813) AND
+H.CAPTION0 like '%server%'
+GROUP BY A.Name0,  A.Model0,A.CurrentTimeZOne0,G.AD_Site_Name0, 
+H.Caption0, H.CSDVersion0, 

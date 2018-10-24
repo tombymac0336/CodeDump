@@ -1,0 +1,20 @@
+******************************
+Count Number of records
+1. Insert a row
+2. Add the function below
+*******************************
+=Count(Fields!Server_Name.Value) 
+
+
+*************************************************
+Row numbering  function
+1.  Insert new column to the left of Server_Name
+2.  Add the funtion below to number the rows
+*************************************************
+
+=RowNumber(Nothing) 
+
+**********************************************************************
+Conditional Color Formatting based on value in the "Platform" column
+**********************************************************************
+=Iif(Fields!Platform.Value = "VMware Virtual Platform",  "RoyalBlue", "#4c68a2")
